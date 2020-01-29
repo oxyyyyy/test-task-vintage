@@ -1,5 +1,9 @@
 <template>
-  <button class="offices__map-control-item-btn" @click="changeMapPos">
+  <button
+    class="offices__map-control-item-btn"
+    :class="{ active: isActive }"
+    @click="changeMapPos"
+  >
     <slot></slot>
   </button>
 </template>
@@ -8,14 +12,17 @@
 export default {
   name: "MapButton",
   data() {
-    false;
+    return {
+      isActive: false
+    };
   },
   props: {
     coords: Array
   },
   methods: {
     changeMapPos() {
-      this.$emit("my-event", this.$props.coords);
+      this.$emit("global-change-map-pos", this.$props.coords);
+      this.isActive = !this.isActive;
     }
   }
 };
@@ -30,5 +37,10 @@ export default {
   font-size: 0.73rem;
   text-transform: uppercase;
   color: #fff;
+  transition: all $trans-prop;
+
+  &.active {
+    color: $color-accent;
+  }
 }
 </style>

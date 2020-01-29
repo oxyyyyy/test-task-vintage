@@ -6,28 +6,28 @@
         <li class="offices__map-control-item">
           <MapButton
             :coords="[50.4501, 30.523399]"
-            v-on:my-event="changeCoordinates"
+            v-on:global-change-map-pos="changeCoordinates"
             >kyiv</MapButton
           >
         </li>
         <li class="offices__map-control-item">
           <MapButton
             :coords="[40.712776, -74.005974]"
-            v-on:my-event="changeCoordinates"
+            v-on:global-change-map-pos="changeCoordinates"
             >new york</MapButton
           >
         </li>
         <li class="offices__map-control-item">
           <MapButton
             :coords="[23.12911, 113.264381]"
-            v-on:my-event="changeCoordinates"
+            v-on:global-change-map-pos="changeCoordinates"
             >guangzhou</MapButton
           >
         </li>
         <li class="offices__map-control-item">
           <MapButton
             :coords="[41.385063, 2.173404]"
-            v-on:my-event="changeCoordinates"
+            v-on:global-change-map-pos="changeCoordinates"
             >barcelona</MapButton
           >
         </li>
