@@ -141,7 +141,7 @@ export default {
       service
         .postContactForm(data)
         .then(response => {
-          console.log(response);
+          // console.log(response);
           this.$notify({
             group: "contact-form-notifications",
             title: "Success!",
@@ -151,7 +151,7 @@ export default {
           this.formIsDisabled = true;
         })
         .catch(error => {
-          console.log("There was an error:", error.response);
+          // console.log("There was an error:", error.response);
           this.$notify({
             group: "contact-form-notifications",
             title: "Error",
