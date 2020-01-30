@@ -5,29 +5,37 @@
       <ul class="offices__map-controls">
         <li class="offices__map-control-item">
           <MapButton
+            :idBtn="0"
             :coords="[50.4501, 30.523399]"
             v-on:global-change-map-pos="changeCoordinates"
+            :class="{ active: activeBtn === 0 }"
             >kyiv</MapButton
           >
         </li>
         <li class="offices__map-control-item">
           <MapButton
+            :idBtn="1"
             :coords="[40.712776, -74.005974]"
             v-on:global-change-map-pos="changeCoordinates"
+            :class="{ active: activeBtn === 1 }"
             >new york</MapButton
           >
         </li>
         <li class="offices__map-control-item">
           <MapButton
+            :idBtn="2"
             :coords="[23.12911, 113.264381]"
             v-on:global-change-map-pos="changeCoordinates"
+            :class="{ active: activeBtn === 2 }"
             >guangzhou</MapButton
           >
         </li>
         <li class="offices__map-control-item">
           <MapButton
+            :idBtn="3"
             :coords="[41.385063, 2.173404]"
             v-on:global-change-map-pos="changeCoordinates"
+            :class="{ active: activeBtn === 3 }"
             >barcelona</MapButton
           >
         </li>
@@ -60,13 +68,15 @@ export default {
       zoom: 13,
       center: [50.4501, 30.523399],
       url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
-      marker: [50.4501, 30.523399]
+      marker: [50.4501, 30.523399],
+      activeBtn: 0
     };
   },
   methods: {
-    changeCoordinates(coordinates) {
+    changeCoordinates(coordinates, activeBtn) {
       this.center = coordinates;
       this.marker = coordinates;
+      this.activeBtn = activeBtn;
     }
   }
 };
