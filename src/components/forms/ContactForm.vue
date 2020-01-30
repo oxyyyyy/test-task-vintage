@@ -140,7 +140,7 @@ export default {
       this.preloaderIsActive = true;
       service
         .postContactForm(data)
-        .then(response => {
+        .then(() => {
           // console.log(response);
           this.$notify({
             group: "contact-form-notifications",
@@ -150,7 +150,7 @@ export default {
           });
           this.formIsDisabled = true;
         })
-        .catch(error => {
+        .catch(() => {
           // console.log("There was an error:", error.response);
           this.$notify({
             group: "contact-form-notifications",
