@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import service from "@/services/service.js";
+
 export default {
   name: "ContactForm",
   data() {
@@ -48,48 +50,62 @@ export default {
   },
   methods: {
     submitContactForm() {
-      if (this.errors.length === 0) {
-        return true;
-      }
+      if (this.errors.length !== 0) {
+        this.errors = [];
+        this.name.isValid = true;
+        this.phone.isValid = true;
+        this.email.isValid = true;
 
-      this.errors = [];
-      this.name.isValid = true;
-      this.phone.isValid = true;
-      this.email.isValid = true;
+        if (!this.name.text) {
+          this.errors.push("Name is required");
+          this.name.isValid = false;
+        } else if (!this.validateName(this.name.text)) {
+          this.errors.push("Name is not correct");
+          this.name.isValid = false;
+        } else if (this.name.text.length > 30) {
+          this.errors.push("Name is too long");
+          this.name.isValid = false;
+        }
+        if (!this.phone.text) {
+          this.errors.push("Phone is required");
+          this.phone.isValid = false;
+        } else if (this.phone.text.length < 9) {
+          this.errors.push("Phone is too short");
+          this.phone.isValid = false;
+        }
+        if (!this.email.text) {
+          this.errors.push("Email is required");
+          this.email.isValid = false;
+        } else if (!this.validateEmail(this.email.text)) {
+          this.errors.push("Email is not correct");
+          this.email.isValid = false;
+        }
 
-      if (!this.name.text) {
-        this.errors.push("Name is required");
-        this.name.isValid = false;
-      } else if (!this.validateName(this.name.text)) {
-        this.errors.push("Name is not correct");
-        this.name.isValid = false;
-      } else if (this.name.text.length > 30) {
-        this.errors.push("Name is too long");
-        this.name.isValid = false;
-      }
-      if (!this.phone.text) {
-        this.errors.push("Phone is required");
-        this.phone.isValid = false;
-      } else if (this.phone.text.length < 9) {
-        this.errors.push("Phone is too short");
-        this.phone.isValid = false;
-      }
-      if (!this.email.text) {
-        this.errors.push("Email is required");
-        this.email.isValid = false;
-      } else if (!this.validateEmail(this.email.text)) {
-        this.errors.push("Email is not correct");
-        this.email.isValid = false;
-      }
-
-      this.errors.forEach(errorItem => {
-        this.$notify({
-          group: "contact-form-notifications",
-          title: "Error",
-          text: errorItem,
-          type: "error"
+        this.errors.forEach(errorItem => {
+          this.$notify({
+            group: "contact-form-notifications",
+            title: "Error",
+            text: errorItem,
+            type: "error"
+          });
         });
-      });
+
+        return false;
+      }
+
+      const data = {
+        name: this.name.text,
+        phone: this.phone.text,
+        email: this.email.text
+      };
+      service
+        .postContactForm(data)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log("There was an error:", error.response);
+        });
     },
     validateEmail: email => {
       const RE = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
