@@ -19,6 +19,7 @@ textarea {
   align-items: center;
   border-bottom: 1px solid #000;
   padding: 1.3rem 0 1rem 0;
+  transition: all $trans-prop;
 
   label {
     font-family: $font-light;
@@ -34,6 +35,15 @@ textarea {
     width: 100%;
     font-family: $font-light;
     font-size: 1.2rem;
+  }
+
+  &.filled {
+    color: #fff;
+    border-bottom-color: #fff;
+
+    input {
+      color: #fff;
+    }
   }
 
   &.not-valid {
@@ -122,6 +132,7 @@ textarea {
 
   &:disabled {
     cursor: not-allowed;
+    opacity: 0.7;
   }
 }
 

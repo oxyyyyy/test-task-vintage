@@ -1,10 +1,16 @@
 <template>
   <form action="#" class="default-form" v-on:submit.prevent="submitContactForm">
-    <div class="input-group" :class="{ 'not-valid': !name.isValid }">
+    <div
+      class="input-group"
+      :class="{ 'not-valid': !name.isValid, filled: name.text.length }"
+    >
       <label for="name">Name</label>
       <input type="text" name="name" id="name" v-model="name.text" />
     </div>
-    <div class="input-group" :class="{ 'not-valid': !phone.isValid }">
+    <div
+      class="input-group"
+      :class="{ 'not-valid': !phone.isValid, filled: phone.text.length }"
+    >
       <label for="phone">Phone</label>
       <the-mask
         :mask="'+380 (##) ### ## ##'"
@@ -13,7 +19,10 @@
         v-model="phone.text"
       />
     </div>
-    <div class="input-group" :class="{ 'not-valid': !email.isValid }">
+    <div
+      class="input-group"
+      :class="{ 'not-valid': !email.isValid, filled: email.text.length }"
+    >
       <label for="email">Email</label>
       <input type="text" name="email" id="email" v-model="email.text" />
     </div>

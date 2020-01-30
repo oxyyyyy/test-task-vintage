@@ -97,7 +97,7 @@ export default {
   margin-right: 116px;
 
   @media screen and (max-width: $bp-medium) {
-    padding: 30px 15px;
+    padding: 50px 15px;
     margin: 0;
     max-width: initial;
   }
