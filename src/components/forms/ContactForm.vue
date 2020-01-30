@@ -50,8 +50,9 @@
       type="submit"
       value="get in touch"
       class="default-form__submit-btn"
+      :disabled="formIsDisabled"
     />
-    <notifications group="contact-form-notifications" />
+    <notifications group="contact-form-notifications" position="top left" />
     <div class="preloader" :class="{ active: preloaderIsActive }">
       <img src="@/assets/preloader.svg" alt="" />
     </div>
@@ -79,7 +80,8 @@ export default {
       },
       isAgreement: true,
       errors: [""],
-      preloaderIsActive: false
+      preloaderIsActive: false,
+      formIsDisabled: false
     };
   },
   methods: {
@@ -140,9 +142,22 @@ export default {
         .postContactForm(data)
         .then(response => {
           console.log(response);
+          this.$notify({
+            group: "contact-form-notifications",
+            title: "Success!",
+            text: "Form was submitted",
+            type: "success"
+          });
+          this.formIsDisabled = true;
         })
         .catch(error => {
           console.log("There was an error:", error.response);
+          this.$notify({
+            group: "contact-form-notifications",
+            title: "Error",
+            text: "Something went wrong",
+            type: "error"
+          });
         })
         .finally(() => {
           this.preloaderIsActive = false;

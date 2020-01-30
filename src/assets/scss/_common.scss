@@ -113,9 +113,15 @@ textarea {
   border: 2px solid #262626;
   transition: all $trans-prop;
 
-  &:hover {
-    background-color: transparent;
-    color: #262626;
+  &:not(:disabled) {
+    &:hover {
+      background-color: transparent;
+      color: #262626;
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }
 
