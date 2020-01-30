@@ -3,7 +3,9 @@
     <div class="container">
       <h2 class="CTA__title">Contact Us</h2>
       <div class="CTA__grid">
-        <div class="CTA__grid-item"></div>
+        <div class="CTA__grid-item">
+          <ContactForm />
+        </div>
         <div class="CTA__grid-item">
           <p class="CTA__text">
             Please tell us more about your request and give us info about your
@@ -16,8 +18,13 @@
 </template>
 
 <script>
+import ContactForm from "@/components/forms/ContactForm.vue";
+
 export default {
-  name: "CTA"
+  name: "CTA",
+  components: {
+    ContactForm
+  }
 };
 </script>
 
@@ -39,6 +46,7 @@ export default {
 .CTA__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-gap: 100px;
 }
 
 .CTA__text {
