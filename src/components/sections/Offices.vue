@@ -1,6 +1,6 @@
 <template>
   <section id="section-offices" class="section-offices">
-    <div class="offices__content">
+    <div class="offices__content" data-aos="fade-in">
       <h2 class="offices__title">Our Offices</h2>
       <ul class="offices__map-controls">
         <li
@@ -21,7 +21,7 @@
         {{ items[active].title }}, Stepan Bandera, 33<br />02066<br />Ukraine
       </address>
     </div>
-    <div class="offices__map-container">
+    <div class="offices__map-container" data-aos="fade-left">
       <div id="mapid">
         <l-map :zoom="zoom" :center="center">
           <l-tile-layer :url="url"></l-tile-layer>

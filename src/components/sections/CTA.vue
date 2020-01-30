@@ -3,10 +3,10 @@
     <div class="container">
       <h2 class="CTA__title">Contact Us</h2>
       <div class="CTA__grid">
-        <div class="CTA__grid-item">
+        <div class="CTA__grid-item" data-aos="fade-in">
           <ContactForm />
         </div>
-        <div class="CTA__grid-item">
+        <div class="CTA__grid-item" data-aos="fade-in">
           <p class="CTA__text">
             Please tell us more about your request and give us info about your
             company and country

@@ -3,7 +3,7 @@
     <div class="container">
       <h1 class="contacts__title">Contacts</h1>
       <div class="contacts__grid">
-        <div class="contacts__grid-item">
+        <div class="contacts__grid-item" data-aos="fade-in">
           <h3 class="contacts__subtitle">
             <span class="contacts__highlight">GMS</span> Headquarters
           </h3>
@@ -27,7 +27,7 @@
             </div>
           </div>
         </div>
-        <div class="contacts__grid-item">
+        <div class="contacts__grid-item" data-aos="fade-in">
           <h3 class="contacts__subtitle">
             Technical support <span class="contacts__highlight">24/7</span>
           </h3>
