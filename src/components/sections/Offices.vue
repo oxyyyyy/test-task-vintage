@@ -34,7 +34,7 @@
       </ul>
       <h4 class="offices__subtitle">Global Message Services Ukraine LLC</h4>
       <address class="offices__address">
-        Kuiv, Stepan Bandera, 33<br />02066<br />Ukraine
+        Kyiv, Stepan Bandera, 33<br />02066<br />Ukraine
       </address>
     </div>
     <div class="offices__map-container">

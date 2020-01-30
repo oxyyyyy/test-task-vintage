@@ -33,7 +33,7 @@ export default {
 @import "../../assets/scss/_vars.scss";
 
 .section-CTA {
-  padding: 5.8rem 0;
+  padding: 5.8rem 0 6.3rem 0;
   background-image: radial-gradient(
     rgba(255, 255, 255, 0.2) 4%,
     transparent 4%

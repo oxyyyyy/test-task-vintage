@@ -17,6 +17,35 @@
       <label for="email">Email</label>
       <input type="text" name="email" id="email" v-model="email.text" />
     </div>
+    <div
+      class="checkbox"
+      :class="{ 'not-valid': !isAgreement }"
+      style="margin-top: 0.7rem;"
+    >
+      <input
+        type="checkbox"
+        name="agreement"
+        id="agreement"
+        v-model="isAgreement"
+      />
+      <label for="agreement">
+        <div class="checkbox__box">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="13px"
+            height="14px"
+          >
+            <path
+              fill-rule="evenodd"
+              fill="rgb(0, 0, 0)"
+              d="M12.432,1.252 L6.020,12.243 L6.384,12.680 L5.616,13.320 L5.484,13.162 L5.432,13.252 L4.568,12.748 L4.803,12.345 L0.616,7.320 L1.384,6.680 L5.339,11.426 L11.568,0.748 L12.432,1.252 Z"
+            />
+          </svg>
+        </div>
+        <p class="checkbox__text">I agree the processing of personal data</p>
+      </label>
+    </div>
     <input
       type="submit"
       value="get in touch"
@@ -45,6 +74,7 @@ export default {
         text: "",
         isValid: true
       },
+      isAgreement: true,
       errors: [""]
     };
   },
@@ -79,6 +109,9 @@ export default {
         } else if (!this.validateEmail(this.email.text)) {
           this.errors.push("Email is not correct");
           this.email.isValid = false;
+        }
+        if (!this.isAgreement) {
+          this.errors.push("Agreement is required");
         }
 
         this.errors.forEach(errorItem => {
