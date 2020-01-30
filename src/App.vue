@@ -29,7 +29,7 @@ textarea {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #000;
-  padding: 1rem 0;
+  padding: 2rem 0 1.2rem 0;
 
   label {
     font-family: $font-light;
@@ -45,6 +45,14 @@ textarea {
     width: 100%;
     font-family: $font-light;
     font-size: 1.2rem;
+  }
+
+  &.not-valid {
+    border-bottom-color: $color-error;
+
+    label {
+      color: $color-error;
+    }
   }
 }
 

@@ -5,10 +5,15 @@ import store from "./store";
 import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
 import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
+import Notifications from "vue-notification";
+import VueTheMask from "vue-the-mask";
 
 Vue.component("l-map", LMap);
 Vue.component("l-tile-layer", LTileLayer);
 Vue.component("l-marker", LMarker);
+
+Vue.use(Notifications);
+Vue.use(VueTheMask);
 
 delete Icon.Default.prototype._getIconUrl;
 
