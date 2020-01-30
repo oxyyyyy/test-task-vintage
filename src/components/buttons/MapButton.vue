@@ -39,7 +39,8 @@ export default {
   color: #fff;
   transition: all $trans-prop;
 
-  &.active {
+  &.active,
+  &:hover {
     color: $color-accent;
   }
 }

@@ -7,6 +7,7 @@ import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Notifications from "vue-notification";
 import VueTheMask from "vue-the-mask";
+import vueSmoothScroll from "vue2-smooth-scroll";
 
 Vue.component("l-map", LMap);
 Vue.component("l-tile-layer", LTileLayer);
@@ -14,6 +15,7 @@ Vue.component("l-marker", LMarker);
 
 Vue.use(Notifications);
 Vue.use(VueTheMask);
+Vue.use(vueSmoothScroll);
 
 delete Icon.Default.prototype._getIconUrl;
 

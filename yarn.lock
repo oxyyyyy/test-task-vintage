@@ -8302,6 +8302,11 @@ vue2-leaflet@^2.4.2:
   resolved "https://registry.yarnpkg.com/vue2-leaflet/-/vue2-leaflet-2.4.2.tgz#f3b718c915b5391ec8469b96bacb282a543cda24"
   integrity sha512-lRBkmgjyWOmp9o3t83rpPUYmDpo0g9PBFVsb5aSC5OhrnyPLmWcDRjjVCEmDQaGi4V+34tjrF9b+wkoBLwiRew==
 
+vue2-smooth-scroll@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/vue2-smooth-scroll/-/vue2-smooth-scroll-1.2.0.tgz#0dd1c0f9f083a34d2327ecc3ea0b65dc8d19b216"
+  integrity sha512-NwF5Me6B1ZWx8yuHH3csEbIgZR5FxmOAwf67fWo+C5dHpbmWWzyXRzl4Vbj9D4VsGdxKoB9Om94FQiWR5csp2A==
+
 vue@^2.6.10:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"

@@ -1,5 +1,5 @@
 <template>
-  <section class="section-contacts">
+  <section id="section-contacts" class="section-contacts">
     <div class="container">
       <h1 class="contacts__title">Contacts</h1>
       <div class="contacts__grid">
@@ -23,7 +23,7 @@
               <p>Send message</p>
               <a href="#">viber us</a>
               <p>Send form</p>
-              <a href="#todo">contact us</a>
+              <a href="#section-CTA" v-smooth-scroll>contact us</a>
             </div>
           </div>
         </div>
@@ -57,7 +57,7 @@ export default {
 @import "../../assets/scss/_vars.scss";
 
 .section-contacts {
-  padding: 55px 0;
+  padding: 3.3rem 0 6rem 0;
 }
 
 .contacts__title {

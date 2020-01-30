@@ -1,5 +1,5 @@
 <template>
-  <section class="section-offices">
+  <section id="section-offices" class="section-offices">
     <div class="offices__content">
       <h2 class="offices__title">Our Offices</h2>
       <ul class="offices__map-controls">
@@ -81,27 +81,40 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   background-color: $color-black;
   color: #fff;
+
+  @media screen and (max-width: $bp-medium) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .offices__content {
-  padding: 60px 0;
+  padding: 90px 0 25px 15px;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: 116px;
+
+  @media screen and (max-width: $bp-medium) {
+    padding: 30px 15px;
+    margin: 0;
+    max-width: initial;
+  }
 }
 
 .offices__title {
   font-size: 2.27rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.4rem;
 }
 
 .offices__map-controls {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 3rem;
+  margin-bottom: 2.7rem;
 }
 
 .offices__map-control-item {
   &:not(:last-child) {
-    margin-right: 1.2rem;
+    margin-right: 1.6rem;
   }
 }
 
@@ -114,7 +127,8 @@ export default {
 
 .offices__subtitle {
   font-size: 1.73rem;
-  margin-bottom: 1rem;
+  line-height: 1.1;
+  margin-bottom: 1.7rem;
 }
 
 .offices__address {
@@ -124,5 +138,9 @@ export default {
 
 #mapid {
   height: 500px;
+
+  @media screen and (max-width: $bp-medium) {
+    height: 300px;
+  }
 }
 </style>

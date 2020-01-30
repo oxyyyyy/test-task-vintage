@@ -1,5 +1,5 @@
 <template>
-  <section class="section-CTA">
+  <section id="section-CTA" class="section-CTA">
     <div class="container">
       <h2 class="CTA__title">Contact Us</h2>
       <div class="CTA__grid">
@@ -33,8 +33,14 @@ export default {
 @import "../../assets/scss/_vars.scss";
 
 .section-CTA {
+  padding: 5.8rem 0;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.2) 4%,
+    transparent 4%
+  );
   background-color: $color-accent;
-  padding: 100px 0;
+  background-position: center;
+  background-size: 75px 75px;
 }
 
 .CTA__title {
@@ -46,12 +52,18 @@ export default {
 .CTA__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 100px;
+  grid-gap: 75px;
+
+  @media screen and (max-width: $bp-medium) {
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+  }
 }
 
 .CTA__text {
   font-family: $font-light;
   font-size: 1.2rem;
   color: #000;
+  margin-top: 0.8rem;
 }
 </style>
