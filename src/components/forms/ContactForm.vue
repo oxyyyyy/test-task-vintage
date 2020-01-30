@@ -52,6 +52,9 @@
       class="default-form__submit-btn"
     />
     <notifications group="contact-form-notifications" />
+    <div class="preloader" :class="{ active: preloaderIsActive }">
+      <img src="@/assets/preloader.svg" alt="" />
+    </div>
   </form>
 </template>
 
@@ -75,7 +78,8 @@ export default {
         isValid: true
       },
       isAgreement: true,
-      errors: [""]
+      errors: [""],
+      preloaderIsActive: false
     };
   },
   methods: {
@@ -131,6 +135,7 @@ export default {
         phone: this.phone.text,
         email: this.email.text
       };
+      this.preloaderIsActive = true;
       service
         .postContactForm(data)
         .then(response => {
@@ -138,6 +143,9 @@ export default {
         })
         .catch(error => {
           console.log("There was an error:", error.response);
+        })
+        .finally(() => {
+          this.preloaderIsActive = false;
         });
     },
     validateEmail: email => {
@@ -147,6 +155,9 @@ export default {
     validateName: name => {
       const RE = /^[a-zA-Z\s]*$/;
       return RE.test(name);
+    },
+    togglePreloader() {
+      this.preloaderIsActive = !this.preloaderIsActive;
     }
   }
 };

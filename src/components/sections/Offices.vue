@@ -3,46 +3,22 @@
     <div class="offices__content">
       <h2 class="offices__title">Our Offices</h2>
       <ul class="offices__map-controls">
-        <li class="offices__map-control-item">
-          <MapButton
-            :idBtn="0"
-            :coords="[50.4501, 30.523399]"
-            v-on:global-change-map-pos="changeCoordinates"
-            :class="{ active: activeBtn === 0 }"
-            >kyiv</MapButton
-          >
-        </li>
-        <li class="offices__map-control-item">
-          <MapButton
-            :idBtn="1"
-            :coords="[40.712776, -74.005974]"
-            v-on:global-change-map-pos="changeCoordinates"
-            :class="{ active: activeBtn === 1 }"
-            >new york</MapButton
-          >
-        </li>
-        <li class="offices__map-control-item">
-          <MapButton
-            :idBtn="2"
-            :coords="[23.12911, 113.264381]"
-            v-on:global-change-map-pos="changeCoordinates"
-            :class="{ active: activeBtn === 2 }"
-            >guangzhou</MapButton
-          >
-        </li>
-        <li class="offices__map-control-item">
-          <MapButton
-            :idBtn="3"
-            :coords="[41.385063, 2.173404]"
-            v-on:global-change-map-pos="changeCoordinates"
-            :class="{ active: activeBtn === 3 }"
-            >barcelona</MapButton
-          >
+        <li
+          class="offices__map-control-item"
+          v-for="(item, index) in items"
+          :key="index"
+          :coords="item.coords"
+          :class="{ active: active === index }"
+          @click.prevent="changeMapPos(index, item.coords)"
+        >
+          <button class="offices__map-control-item-btn">
+            {{ item.title }}
+          </button>
         </li>
       </ul>
       <h4 class="offices__subtitle">Global Message Services Ukraine LLC</h4>
       <address class="offices__address">
-        Kyiv, Stepan Bandera, 33<br />02066<br />Ukraine
+        {{ items[active].title }}, Stepan Bandera, 33<br />02066<br />Ukraine
       </address>
     </div>
     <div class="offices__map-container">
@@ -58,25 +34,42 @@
 
 <script>
 import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
-import MapButton from "@/components/buttons/MapButton.vue";
 
 export default {
   name: "Offices",
-  components: { LMap, LTileLayer, LMarker, MapButton },
+  components: { LMap, LTileLayer, LMarker },
   data() {
     return {
       zoom: 13,
       center: [50.4501, 30.523399],
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
       marker: [50.4501, 30.523399],
-      activeBtn: 0
+      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      active: 0,
+      items: [
+        {
+          title: "Kyiv",
+          coords: [50.4501, 30.523399]
+        },
+        {
+          title: "New York",
+          coords: [40.712776, -74.005974]
+        },
+        {
+          title: "Guangzhou",
+          coords: [23.12911, 113.264381]
+        },
+        {
+          title: "Barcelona",
+          coords: [41.385063, 2.173404]
+        }
+      ]
     };
   },
   methods: {
-    changeCoordinates(coordinates, activeBtn) {
-      this.center = coordinates;
-      this.marker = coordinates;
-      this.activeBtn = activeBtn;
+    changeMapPos(index, coords) {
+      this.center = coords;
+      this.marker = coords;
+      this.active = index;
     }
   }
 };
@@ -126,6 +119,13 @@ export default {
   &:not(:last-child) {
     margin-right: 1.6rem;
   }
+
+  &.active,
+  &:hover {
+    .offices__map-control-item-btn {
+      color: $color-accent;
+    }
+  }
 }
 
 .offices__map-control-item-btn {
@@ -133,6 +133,7 @@ export default {
   font-size: 0.73rem;
   text-transform: uppercase;
   color: #fff;
+  transition: all $trans-prop;
 }
 
 .offices__subtitle {
